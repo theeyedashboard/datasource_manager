@@ -14,6 +14,6 @@ get '/' do
 end
 
 get '/datasource/:id' do
-  datasource = DataSource.find_by_id(params['id'])
+  datasource = DataSource.where(id: params['id'])
   datasource.to_json
 end

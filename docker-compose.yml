@@ -4,3 +4,8 @@ datasourcemanager:
     - .:/datasource_manager
   ports:
     - "8002:80"
+  links:
+    - mongo
+
+mongo:
+  image: mongo

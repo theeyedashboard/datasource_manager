@@ -4,30 +4,27 @@ Datasources REST microservice
 
 ---
 
-### Build, test & run with Docker
+### Build & run with Docker
 ```shell
+# build
+docker-compose build
+# run
 docker-compose up
 ```
 ```shell
+# check
 wget [dockerhost]:8002
 ```
 
-### Force rebuild/test
+### Run tests
+```shell
+# app container must be built and running
+docker-compose up
+# exec rspec
+docker exec -t -i datasourcemanager_datasourcemanager_1 rspec
+```
+
+### Force rebuild
 ```shell
 docker-compose build
-```
-```shell
-Building datasourcemanager...
-Step 0 : FROM ruby
- ---> a1ed99fd54db
-...
-Step 8 : RUN rspec
- ---> Running in fbfeb3fb90f5
-.
-
-Finished in 0.03623 seconds (files took 0.4083 seconds to load)
-1 example, 0 failures
-
-...
-Successfully built 439369d7736d
 ```

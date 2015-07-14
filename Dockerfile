@@ -5,9 +5,10 @@ RUN gem install rack-test
 RUN gem install rspec
 RUN gem install json
 RUN gem install sinatra-reloader
+RUN gem install mongoid
+RUN gem install database_cleaner
 RUN mkdir /datasource_manager
 WORKDIR /datasource_manager
 ADD . /datasource_manager
-RUN rspec
 CMD ["ruby", "src/app.rb"]
 EXPOSE 80

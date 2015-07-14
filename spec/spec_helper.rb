@@ -16,7 +16,33 @@
 # users commonly want.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+
+# setup mongodb
+# ENV['MONGOID_ENV'] = 'development'
+# ENV['RACK_ENV'] = 'development'
+# require 'mongoid'
+# Mongoid.load!("mongoid.yml")
+require 'database_cleaner'
+
+def app
+  Sinatra::Application
+end
+
 RSpec.configure do |config|
+
+  # Clean/Reset Mongoid DB prior to running each test.
+  # config.before(:each) do
+  #   Mongoid::Sessions.default.collections.select {|c| c.name !~ /system/ }.each(&:drop)
+  # end
+
+  DatabaseCleaner[:mongoid].strategy = :truncation
+
+  config.before :each do
+    # DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner[:mongoid].clean
+    # DatabaseCleaner.start
+  end
+
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
