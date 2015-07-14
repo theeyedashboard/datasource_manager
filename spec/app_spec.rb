@@ -105,4 +105,31 @@ describe 'Datasource Manager App' do
       expect(DataSource.first.description).to eq("Description for new datasource")
     end
   end
+
+  # DELETE TEST
+  context 'when I POST /datasource' do
+
+    before(:each) do
+      # Build datasources fixtures
+      DataSource.create(title:        'First datasource',
+                        description:  'Description for datasource #1')
+
+      DataSource.create(title:        'Second datasource',
+                        description:  'Description for datasource #2')
+      @first_datasource = DataSource.first
+    end
+
+    it "should create a datasource" do
+
+      # check if datasource count is normal
+      expect(DataSource.count).to eq(2)
+
+      # update first datasource with PUT method
+      delete "/datasource/#{@first_datasource.id}"
+
+      # check if datasource count decreased
+      expect(DataSource.count).to eq(1)
+    end
+  end
+
 end
