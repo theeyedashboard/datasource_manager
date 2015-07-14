@@ -1,2 +1,2 @@
-# datasource_manager
+# TheEyeDashboard - Datasource microservice
 Datasources REST microservice
