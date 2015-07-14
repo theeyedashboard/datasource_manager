@@ -8,7 +8,9 @@ describe 'Datasource Manager App' do
   include Rack::Test::Methods
 
   context 'when I visit /' do
-    it "should return all datasources" do
+
+    before(:each) do
+      # Build datasources fixtures
       DataSource.create(id:           '1',
                         title:        'First datasource',
                         description:  'Description for datasource #1')
@@ -16,6 +18,10 @@ describe 'Datasource Manager App' do
       DataSource.create(id:           '2',
                         title:        'Second datasource',
                         description:  'Description for datasource #2')
+    end
+
+    # check index '/'
+    it "should return all datasources" do
       get '/'
       datasources = JSON.parse(last_response.body)
       expect(datasources[0]['title']).to eq('First datasource')
