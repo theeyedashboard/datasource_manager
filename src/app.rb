@@ -9,11 +9,11 @@ set :bind, '0.0.0.0'
 set :port, 80
 
 get '/' do
-  datasources = DataSource.all()
-  datasources.to_json
+  @datasources = DataSource.all()
+  @datasources.to_json
 end
 
 get '/datasource/:id' do
-  datasource = DataSource.where(id: params['id'])
-  datasource.to_json
+  @datasource = DataSource.find(params['id'])
+  @datasource.to_json
 end

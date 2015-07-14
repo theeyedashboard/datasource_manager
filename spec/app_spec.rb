@@ -24,19 +24,34 @@ describe 'Datasource Manager App' do
     it "should return all datasources" do
       get '/'
       datasources = JSON.parse(last_response.body)
+      # check first datasource
       expect(datasources[0]['title']).to eq('First datasource')
+      expect(datasources[0]['description']).to eq('Description for datasource #1')
+      # check second datasource
+      expect(datasources[1]['title']).to eq('Second datasource')
+      expect(datasources[1]['description']).to eq('Description for datasource #2')
     end
   end
 
-  # context 'when I visit /datasources/1' do
-  #   it "should return first datasource" do
-  #     get '/datasource/1'
-  #     @expected = {
-  #       :id           => '1',
-  #       :title        => 'First datasource',
-  #       :description  => 'Description for datasource #1'
-  #     }.to_json
-  #     expect(last_response.body).to eq(@expected)
-  #   end
-  # end
+  context 'when I visit /datasources/1' do
+
+    before(:each) do
+      # Build datasources fixtures
+      DataSource.create(title:        'First datasource',
+                        description:  'Description for datasource #1')
+
+      DataSource.create(title:        'Second datasource',
+                        description:  'Description for datasource #2')
+      @first_datasource = DataSource.first
+    end
+
+    it "should return first datasource" do
+      # get first datasource from rest
+      get "/datasource/#{@first_datasource.id}"
+      # check if fetched datasource is the one we want
+      datasource = JSON.parse(last_response.body)
+      expect(datasource['title']).to eq("First datasource")
+      expect(datasource['description']).to eq("Description for datasource #1")
+    end
+  end
 end
