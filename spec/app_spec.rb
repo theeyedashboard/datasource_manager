@@ -11,7 +11,7 @@ describe 'Datasource Manager App' do
   end
 
   context 'when I visit /' do
-    it "should respond ok" do
+    it "should return all datasources" do
       get '/'
       @expected = [{
         :id           => 1,
