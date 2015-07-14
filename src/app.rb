@@ -17,3 +17,13 @@ get '/datasource/:id' do
   @datasource = DataSource.find(params['id'])
   @datasource.to_json
 end
+
+put '/datasource/:id' do
+  data = JSON.parse request.body.read
+  @datasource = DataSource.find(params['id'])
+  @datasource.update_attributes(data)
+end
+
+put '/yo' do
+  puts 'yeah !'
+end
