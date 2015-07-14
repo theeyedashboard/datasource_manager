@@ -1,9 +1,9 @@
 require 'spec_helper'
 require 'rspec'
 require 'rack/test'
-require File.dirname(__FILE__) + '/../ds_manager.rb'
+require File.dirname(__FILE__) + '/../app.rb'
 
-describe 'The HelloWorld App' do
+describe 'Datasource Manager App' do
   include Rack::Test::Methods
 
   def app
