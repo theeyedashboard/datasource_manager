@@ -3,15 +3,12 @@ require 'sinatra'
 require 'sinatra/reloader' # TODO: reloader for dev only
 require 'socket'
 require 'json'
+require_relative 'datasources.rb'
 
 set :bind, '0.0.0.0'
 set :port, 80
 
 get '/' do
-  datasource = [{
-    :id          => 1,
-    :title       => 'First datasource',
-    :description => 'Description for datasource #1'
-  }]
-  datasource.to_json
+  datasources = DataSource.index()
+  datasources.to_json
 end
