@@ -9,6 +9,7 @@ set :port, 80
 
 get '/' do
   datasource = [{
+    :id          => 1,
     :title       => 'First datasource',
     :description => 'Description for datasource #1'
   }]

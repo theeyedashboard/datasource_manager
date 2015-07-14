@@ -14,6 +14,7 @@ describe 'Datasource Manager App' do
     it "should respond ok" do
       get '/'
       @expected = [{
+        :id           => 1,
         :title        => 'First datasource',
         :description  => 'Description for datasource #1'
       }].to_json
