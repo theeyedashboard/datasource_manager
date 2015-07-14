@@ -1,5 +1,5 @@
 class DataSource
-  def self.index
+  def self.all
     [{
       :id          => 1,
       :title       => 'First datasource',

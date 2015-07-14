@@ -9,6 +9,6 @@ set :bind, '0.0.0.0'
 set :port, 80
 
 get '/' do
-  datasources = DataSource.index()
+  datasources = DataSource.all()
   datasources.to_json
 end
