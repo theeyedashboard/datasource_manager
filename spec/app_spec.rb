@@ -13,10 +13,10 @@ describe 'Datasource Manager App' do
   context 'when I visit /' do
     it "should respond ok" do
       get '/'
-      @expected = {
+      @expected = [{
         :title        => 'First datasource',
         :description  => 'Description for datasource #1'
-      }.to_json
+      }].to_json
       expect(last_response.body).to eq(@expected)
     end
   end
