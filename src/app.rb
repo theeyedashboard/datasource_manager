@@ -24,6 +24,7 @@ put '/datasource/:id' do
   @datasource.update_attributes(data)
 end
 
-put '/yo' do
-  puts 'yeah !'
+post '/datasource/' do
+  data = JSON.parse request.body.read
+  @datasource = DataSource.create(data)
 end

@@ -60,6 +60,7 @@ describe 'Datasource Manager App' do
   end
 
   # EDIT TEST
+
   context 'when I update /datasources/1' do
 
     before(:each) do
@@ -87,4 +88,21 @@ describe 'Datasource Manager App' do
     end
   end
 
+  # CREATE TEST
+
+  context 'when I POST /datasource' do
+
+    it "should create a datasource" do
+
+      # update first datasource with PUT method
+      post "/datasource/",
+           { title:       'New datasource',
+             description: 'Description for new datasource'}.to_json
+
+      # check if first datasource is updated
+      expect(DataSource.count).to eq(1)
+      expect(DataSource.first.title).to eq("New datasource")
+      expect(DataSource.first.description).to eq("Description for new datasource")
+    end
+  end
 end
