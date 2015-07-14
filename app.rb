@@ -1,5 +1,6 @@
 require 'digest'
 require 'sinatra'
+require 'sinatra/reloader' # TODO: reloader for dev only
 require 'socket'
 require 'json'
 
