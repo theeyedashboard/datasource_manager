@@ -17,6 +17,11 @@ describe 'Datasource Manager App' do
         :id           => 1,
         :title        => 'First datasource',
         :description  => 'Description for datasource #1'
+      },
+      {
+        :id           => 2,
+        :title        => 'Second datasource',
+        :description  => 'Description for datasource #2'
       }].to_json
       expect(last_response.body).to eq(@expected)
     end
