@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'rspec'
 require 'rack/test'
-require File.dirname(__FILE__) + '/../app.rb'
+require_relative '../src/app.rb'
 
 describe 'Datasource Manager App' do
   include Rack::Test::Methods

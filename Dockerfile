@@ -9,5 +9,5 @@ RUN mkdir /datasource_manager
 WORKDIR /datasource_manager
 ADD . /datasource_manager
 RUN rspec
-CMD ["ruby", "app.rb"]
+CMD ["ruby", "src/app.rb"]
 EXPOSE 80
