@@ -3,6 +3,7 @@ RUN gem install sinatra
 RUN gem install thin
 RUN gem install rack-test
 RUN gem install rspec
+RUN gem install json
 RUN mkdir /datasource_manager
 WORKDIR /datasource_manager
 ADD . /datasource_manager

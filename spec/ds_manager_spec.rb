@@ -13,8 +13,11 @@ describe 'The HelloWorld App' do
   context 'when I visit /' do
     it "should respond ok" do
       get '/'
-      expect(last_response).to be_ok
-      # expect(last_response.body).to eq('Hello World')
+      @expected = {
+        :title        => 'First datasource',
+        :description  => 'Description for datasource #1'
+      }.to_json
+      expect(last_response.body).to eq(@expected)
     end
   end
 end
