@@ -15,26 +15,26 @@ get '/' do
 end
 
 # show
-get '/datasource/:id' do
+get '/:id' do
   @datasource = DataSource.find(params['id'])
   @datasource.to_json
 end
 
 # update
-put '/datasource/:id' do
+put '/:id' do
   data = JSON.parse request.body.read
   @datasource = DataSource.find(params['id'])
   @datasource.update_attributes(data)
 end
 
 # create
-post '/datasource/' do
+post '/' do
   data = JSON.parse request.body.read
   @datasource = DataSource.create(data)
 end
 
 # destroy
-delete '/datasource/:id' do
+delete '/:id' do
   @datasource = DataSource.find(params['id'])
   @datasource.delete
 end

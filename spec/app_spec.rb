@@ -37,7 +37,7 @@ describe 'Datasource Manager App' do
 
   # SHOW TEST
 
-  context 'when I visit /datasources/1' do
+  context 'when I visit /{DATASOURCE_ID}' do
 
     before(:each) do
       # Build datasources fixtures
@@ -51,7 +51,7 @@ describe 'Datasource Manager App' do
 
     it "should return first datasource" do
       # get first datasource from rest
-      get "/datasource/#{@first_datasource.id}"
+      get "/#{@first_datasource.id}"
       # check if fetched datasource is the one we want
       datasource = JSON.parse(last_response.body)
       expect(datasource['title']).to eq("First datasource")
@@ -61,7 +61,7 @@ describe 'Datasource Manager App' do
 
   # EDIT TEST
 
-  context 'when I update /datasources/1' do
+  context 'when I update /{DATASOURCE_ID}' do
 
     before(:each) do
       # Build datasources fixtures
@@ -76,10 +76,10 @@ describe 'Datasource Manager App' do
     it "should update datasource" do
 
       # update first datasource with PUT method
-      put "/datasource/#{@first_datasource.id}",
+      put "/#{@first_datasource.id}",
            { title: 'Another datasource'}.to_json
 
-      put "/datasource/#{@first_datasource.id}",
+      put "/#{@first_datasource.id}",
            { description: 'Description for another datasource'}.to_json
 
       # check if first datasource is updated
@@ -90,12 +90,12 @@ describe 'Datasource Manager App' do
 
   # CREATE TEST
 
-  context 'when I POST /datasource' do
+  context 'when I POST /' do
 
     it "should create a datasource" do
 
       # update first datasource with PUT method
-      post "/datasource/",
+      post "/",
            { title:       'New datasource',
              description: 'Description for new datasource'}.to_json
 
@@ -107,7 +107,7 @@ describe 'Datasource Manager App' do
   end
 
   # DELETE TEST
-  context 'when I POST /datasource' do
+  context 'when I DELETE /{DATASOURCE_ID}' do
 
     before(:each) do
       # Build datasources fixtures
@@ -125,7 +125,7 @@ describe 'Datasource Manager App' do
       expect(DataSource.count).to eq(2)
 
       # update first datasource with PUT method
-      delete "/datasource/#{@first_datasource.id}"
+      delete "/#{@first_datasource.id}"
 
       # check if datasource count decreased
       expect(DataSource.count).to eq(1)
