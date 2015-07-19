@@ -12,6 +12,7 @@ set :port, 80
 get '/' do
   @datasources = DataSource.all()
   @datasources.to_json
+  test
 end
 
 # show
