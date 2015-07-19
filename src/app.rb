@@ -10,7 +10,6 @@ set :port, 80
 
 # index
 get '/' do
-  puts "hello"
   @datasources = DataSource.all()
   @datasources.to_json
 end
