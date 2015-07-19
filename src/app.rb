@@ -10,7 +10,7 @@ set :port, 80
 
 # index
 get '/' do
-  @datasources = DataSource.all()
+  @datasources = DataSource.yo()
   @datasources.to_json
 end
 
