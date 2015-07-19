@@ -18,10 +18,13 @@ wget [dockerhost]:8002
 
 ### Run tests
 ```shell
-# app container must be built and running
-docker-compose up
-# exec rspec
-docker exec -t -i datasourcemanager_datasourcemanager_1 rspec
+# you must have boot2docker, docker-compose installed
+./run_tests.sh
+```
+
+### automated tests on push
+```shell
+ln -s ../../pre-commit.sh .git/hooks/pre-push
 ```
 
 ### Force rebuild
