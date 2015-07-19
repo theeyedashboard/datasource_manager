@@ -22,7 +22,7 @@ wget [dockerhost]:8002
 ./run_tests.sh
 ```
 
-### automated tests on push
+### Automated tests on push
 ```shell
 ln -s ../../pre-commit.sh .git/hooks/pre-push
 ```
