@@ -10,5 +10,5 @@ RUN gem install database_cleaner
 RUN mkdir /datasource_manager
 WORKDIR /datasource_manager
 ADD . /datasource_manager
-CMD ["ruby", "src/app.rb"]
+CMD ["ruby", "/datasource_manager/src/app.rb"]
 EXPOSE 80
